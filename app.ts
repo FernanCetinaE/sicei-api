@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 
 const app = express();
-const port = 3005;
 
 //parse body from request
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -66,7 +65,4 @@ app.delete('/alumnos/:id', (req: Request, res: Response) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-    }
-);
+export default app;
