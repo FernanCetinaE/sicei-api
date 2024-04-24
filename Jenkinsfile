@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build'){
             steps{
-                sh '/Users/fernancetina/.nvm/versions/node/v16.17.0/bin/npm i'
+                sh 'npm i'
             }
         }
 
         stage('Test') {
             steps {
-                sh '/Users/fernancetina/.nvm/versions/node/v16.17.0/bin/npm run test'
+                sh 'npm run test'
             }
         }
 
