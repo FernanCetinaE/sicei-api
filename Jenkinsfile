@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     def gitBranchName = env.GIT_BRANCH.split('/').last()
-                    sh "d}ocker run -p 3005:3005 sicei-${gitBranchName}:1.1.0-${env.BUILD_NUMBER}"
+                    sh "docker run -p 3005:3005 sicei-${gitBranchName}:1.1.0-${env.BUILD_NUMBER}"
                 }
             }
         }
