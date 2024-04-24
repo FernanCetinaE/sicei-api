@@ -18,14 +18,14 @@ pipeline {
             steps {
                 script {
                     def gitBranchName = env.GIT_BRANCH.split('/').last()
-                    sh "/usr/local/bin/docker build -t sicei-s${gitBranchName}:1.0.0-${env.BUILD_NUMBER} ."
+                    sh "/usr/local/bin/docker build -t sicei-${gitBranchName}:1.1.0-${env.BUILD_NUMBER} ."
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 3005:3005 my-express-app'
+                sh "docker run -p 3005:3005 sicei-${gitBranchName}:1.1.0-${env.BUILD_NUMBER}"
             }
         }
     }
