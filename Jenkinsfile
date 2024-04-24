@@ -2,14 +2,15 @@ pipeline {
     agent any
     
     stages {
+        stage('Build'){
+            steps{
+                sh 'npm i'
+            }
+        }
+
         stage('Test') {
             steps {
-                script {
-                    def testContainer = docker.build("test-image")
-                    testContainer.inside {
-                        sh 'npm test'
-                    }
-                }
+                sh 'npm run test'
             }
         }
 
