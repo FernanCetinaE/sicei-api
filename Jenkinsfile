@@ -11,7 +11,12 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                script {
+                    def testContainer = docker.build("test-image")
+                    testContainer.inside {
+                        sh 'npm test'
+                    }
+                }
             }
         }
 
